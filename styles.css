@@ -1,0 +1,446 @@
+/* ==========================================================================
+   Aditya Borate — Classic Academic Minimalist Stylesheet
+   Design Inspiration: Jon Barron, Saurabh Gupta, Deepak Pathak, mvp18.github.io
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&family=Lato:wght@400;600;700&display=swap');
+
+:root {
+  color-scheme: light;
+  --bg-color: #ffffff;
+  --surface-color: #ffffff;
+  --text-color: #1f1f1f;
+  --muted-text-color: #4b5563;
+  --link-color: #1772d0;
+  --link-hover-color: #fdd663;
+  --accent-color: #1d4ed8;
+  --highlight-background: #ffffd0;
+  --border-color: #e5e7eb;
+  --prompt-color: #2da44e;
+  --red-link-color: #cb2431;
+  --venue-background: rgba(45, 164, 78, 0.12);
+  --venue-text-color: #1a7f37;
+  --mono-font: 'JetBrains Mono', Consolas, Menlo, monospace;
+}
+
+:root.dark-mode {
+  color-scheme: dark;
+  --bg-color: #0d1117;
+  --surface-color: #161b22;
+  --text-color: #e6edf3;
+  --muted-text-color: #8b949e;
+  --link-color: #58a6ff;
+  --link-hover-color: #fdd663;
+  --accent-color: #79c0ff;
+  --highlight-background: rgba(56, 139, 253, 0.15);
+  --border-color: #30363d;
+  --prompt-color: #3fb950;
+  --venue-background: rgba(63, 185, 80, 0.18);
+  --venue-text-color: #3fb950;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--muted-text-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, transform 0.2s ease;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--link-hover-color);
+  transform: scale(1.15);
+}
+
+.theme-toggle-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.theme-toggle-btn .sun-icon {
+  display: none;
+}
+
+.theme-toggle-btn .moon-icon {
+  display: block;
+}
+
+:root.dark-mode .theme-toggle-btn .sun-icon {
+  display: block;
+}
+
+:root.dark-mode .theme-toggle-btn .moon-icon {
+  display: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, Verdana, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover, a:focus {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* Typography & Headings */
+pageheading {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+heading, sectionheading {
+  font-family: var(--mono-font);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-color);
+  display: block;
+  margin: 28px 0 12px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+heading::before, sectionheading::before {
+  content: "$ ";
+  color: var(--prompt-color);
+  font-weight: 700;
+}
+
+papertitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+strong {
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.term-line {
+  font-family: var(--mono-font);
+  font-size: 13.5px;
+  color: var(--text-color);
+}
+
+.term-prompt {
+  color: var(--prompt-color);
+  font-weight: 700;
+}
+
+.term-cursor-line {
+  font-family: var(--mono-font);
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.term-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 17px;
+  background-color: #ffffff;
+  border: 1.5px solid #1f1f1f;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  animation: term-blink 1s infinite;
+}
+
+:root.dark-mode .term-cursor {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes term-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.venue-badge {
+  display: inline-block;
+  font-family: var(--mono-font);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--venue-text-color);
+  background-color: var(--venue-background);
+  padding: 1px 7px;
+  border-radius: 4px;
+  line-height: 1.5;
+  margin-left: 4px;
+}
+
+/* Page Layout Container */
+.main-wrapper {
+  width: min(92%, 880px);
+  margin: 24px auto 48px;
+  padding: 0 12px;
+}
+
+/* Header Action Row */
+.header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.header-link {
+  font-family: var(--mono-font);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted-text-color);
+}
+
+/* About / Hero Layout */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 36px;
+  align-items: start;
+}
+
+.profile-img-wrapper {
+  text-align: center;
+  margin-top: 70px;
+}
+
+.profile-img {
+  width: 100%;
+  max-width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.bio-text p {
+  margin-bottom: 12px;
+  color: var(--text-color);
+}
+
+.social-links {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.social-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* News List */
+.news-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.news-item {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.news-date {
+  font-family: var(--mono-font);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted-text-color);
+  flex-shrink: 0;
+  width: 80px;
+}
+
+.news-content {
+  flex: 1;
+}
+
+/* Publications & Projects List */
+.project-entry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.project-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.project-title-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
+  line-height: 1.4;
+}
+
+.project-title-text {
+  flex: 1;
+}
+
+.project-date {
+  font-family: var(--mono-font);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted-text-color);
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.project-authors {
+  font-size: 13.5px;
+  color: var(--muted-text-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-links-inline {
+  display: inline-flex;
+  gap: 8px;
+  font-family: var(--mono-font);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.project-desc {
+  font-size: 13.5px;
+  color: var(--text-color);
+  margin-top: 2px;
+}
+
+/* Simple List Sections */
+.simple-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.simple-list li {
+  margin-bottom: 6px;
+}
+
+/* Image Showcase Grid (Designs & Clicks) — Dynamic Masonry Layout */
+.image-grid {
+  columns: 3 280px;
+  column-gap: 16px;
+  margin-top: 20px;
+  margin-bottom: 28px;
+}
+
+.image-grid-item {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  break-inside: avoid;
+  transition: opacity 0.2s ease;
+}
+
+.image-grid-item:hover {
+  opacity: 0.88;
+}
+
+/* Footer */
+.footer-text {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  font-size: 12px;
+  color: var(--muted-text-color);
+  text-align: center;
+  font-family: var(--mono-font);
+}
+
+
+
+/* Mobile Responsive */
+@media (max-width: 680px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-img-wrapper {
+    order: -1;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .profile-img {
+    max-width: 220px;
+    height: 220px;
+  }
+
+  .news-item {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .news-date {
+    width: auto;
+  }
+}
