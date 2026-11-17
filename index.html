@@ -169,10 +169,8 @@
       </div>
       <div class="project-authors">Advisor - Dr. Ashish Mahabal</div>
       <ul class="simple-list" style="margin-top: 4px;">
-        <li><strong>Multimodal MRI Risk Scoring for Prostate Cancer:</strong> Developing a multimodal 3D MRI-based risk score to predict biopsy-defined prostate cancer grade progression during active surveillance, aiming to improve risk
-                    stratification beyond the Prostate Imaging Reporting and Data System (PI-RADS).</li>
-      </ul>
-      <ul class="simple-list" style="margin-top: 4px;">
+        <li><strong>Data AI-Readiness Auditor:</strong> Building an LLM-powered tool that audits the AI-readiness of medical datasets across 10 dimensions, orchestrating document information extraction, a sandboxed code-executing exploratory data analysis agent, and multi-stage LLM scoring with a reviewer pass. Grounded judgments in cited evidence with DICOM-standard de-identification screening, and served open-weight LLMs locally with SGLang using INT8 quantization, speculative decoding, prefix caching, and hardware-aware concurrency.</li>
+        <li><strong>Multimodal MRI Risk Scoring for Prostate Cancer:</strong> Developing a multimodal 3D MRI-based risk score to predict biopsy-defined prostate cancer grade progression during active surveillance, aiming to improve risk stratification beyond the Prostate Imaging Reporting and Data System (PI-RADS).</li>
         <li><strong>IMC Single-Cell Analysis:</strong> Developing an end-to-end pipeline for Hyperion imaging mass cytometry data from human colonic polyp tissue, encompassing cell segmentation, spillover compensation, cell typing, and spatial analysis. Comparing Cellpose-SAM and DeepCell across ~250 tissue regions to characterize segmentation quality, computational efficiency, and method-specific failure modes across tissue regions and cell types.</li>
       </ul>
     </div>
@@ -192,9 +190,7 @@
             target="_blank">Presentation</a></span>
       </div>
       <ul class="simple-list" style="margin-top: 4px;">
-        <li>Developed and validated a quantitative ten-dimension framework to assess AI-readiness of medical datasets,
-          applied it over 10 cancer collections, and identified recurring gaps in label fidelity and operational
-          readiness.</li>
+        <li>Operationalized and refined a quantitative ten-dimensional framework to assess the AI-readiness of medical datasets, auditing 10 cancer collections to expose gaps in label fidelity and operational readiness.</li>
         <li>Developed pipelines transforming multi-modal Early Detection Research Network (EDRN) cancer datasets into
           Croissant-compliant, AI-ready resources for large-scale machine learning applications.</li>
         <li>Created tutorial notebooks demonstrating exploratory ML workflows on AI-ready medical datasets.</li>
@@ -218,9 +214,7 @@
         <li>Investigated whether injecting lightweight semantic (DINOv3) and structural (PiDiNet) guidance directly into
           a frozen SDXL diffusion prior could eliminate the need for disjoint pre-cleaning networks in blind image
           restoration, training on 30K+ images across multiple real-world datasets.</li>
-        <li>Designed a two-phase training regimen consisting of coarse structural alignment via pixel-space regression
-          at high-noise timesteps, followed by perceptual and semantic-similarity refinement at low-noise timesteps.
-        </li>
+        <li>Designed a two-phase training regimen consisting of coarse structural alignment via noise-prediction training over moderate-to-high noise timesteps with pixel-space regression at low-noise timesteps, followed by perceptual and semantic-similarity refinement with pixel-space losses gated to low-noise timesteps.</li>
         <li>Discovered that continuous low-quality latent injection anchors the diffusion prior to the input, and
           formulated a Restoration Sampling Strategy (RSS) that thresholds this injection across the sampling trajectory
           achieving an SSIM of 0.50 under compound degradation.</li>
@@ -235,20 +229,15 @@
         <span class="project-date">[Jan 2025 – Present]</span>
       </div>
       <div class="project-authors">
-        <span>Advisor - Prof. Himanshu Shekhar, Ruchika Dhawan</span>
+        <span>Advisor - Prof. Himanshu Shekhar, Prof. Kenneth Bader</span>
         <span class="project-links-inline">| <a
             href="https://drive.google.com/file/d/1CV034UQDd7AUb2tlNu6fb224EPHET3bK/view"
-            target="_blank">Poster</a></span>
+            target="_blank">Presentation</a></span>
       </div>
       <ul class="simple-list" style="margin-top: 4px;">
-        <li>Investigated whether modern segmentation architectures and a combined Dice-Focal loss could resolve a known
-          early-stage detection failure in ultrasound-guided histotripsy monitoring, benchmarking four architectures
-          against an established ResNet-18 baseline.</li>
-        <li>Introduced a Combined Dice-Focal Loss and a pulse-aware weighted sampler to address class imbalance from
-          sparse early-stage bubble clouds, improving mean IoU from 0.72 to 0.84 over the baseline.</li>
-        <li>Found EfficientNet-B0 U-Net best suited for real-time deployment (7.9M parameters, 13.5ms inference) and
-          DeepLabV3 best for temporal tracking fidelity (Pearson R = 0.92), revealing an accuracy-versus-tracking
-          trade-off.</li>
+        <li>Developing a real-time deep learning framework for automated segmentation of histotripsy-induced ablation zones in ultrasound imaging to enable treatment monitoring for renal tumors, using 1,280 B-mode frames from 13 RBC phantom studies in collaboration with the University of Chicago.</li>
+        <li>Designed causal, gain-invariant temporal features computed online from past frames that capture each pixel's running temporal variability, and trained an ImageNet-pretrained ConvNeXt U-Net with leave-one-sequence-out cross-validation that segments each frame in about 2 ms.</li>
+        <li>Outperformed prior state-of-the-art on the test set, with Dice 0.90 vs. 0.71 (+27%), mean IoU 0.90 vs. 0.75 (+20%), mean accuracy 0.94 vs. 0.80 (+17%), and Hausdorff distance 4.3 vs. 29.5 px (86% lower).</li>
       </ul>
     </div>
 
@@ -270,6 +259,42 @@
         <li>Developed LitGPT-to-HuggingFace conversion tools for standard serving stacks, indexed a 35GB+ continual
           pretraining corpus, and experimented with prompting techniques for structured reasoning.</li>
       </ul>
+    </div>
+
+    <!-- Presentations & Abstracts: cat presentations.txt -->
+    <sectionheading>cat presentations.txt</sectionheading>
+
+    <div class="project-entry">
+      <div class="project-title-line">
+        <span class="project-title-text">
+          <papertitle>Making EDRN Datasets AI Ready: Measuring Readiness Across Ten Dimensions</papertitle>
+          <span class="venue-badge">Poster</span>
+        </span>
+        <span class="project-date">[Sep 2026]</span>
+      </div>
+      <div class="project-authors">
+        <span>A. Mahabal, D. Crichton, H. Kincaid, S. Kelly, I. Yanovsky, <strong>A. Borate</strong>, V. Jani, and the EDRN Team</span>
+        <span class="project-links-inline">| <a href="https://edrn.cancer.gov/news-and-events/meeting-reports/15-sci/" target="_blank">Workshop Link</a></span>
+      </div>
+      <div class="project-desc">
+        Presented at the 15th EDRN Scientific Workshop, Gaithersburg, MD
+      </div>
+    </div>
+
+    <div class="project-entry">
+      <div class="project-title-line">
+        <span class="project-title-text">
+          <papertitle>Ultrasound Image Segmentation of Histotripsy Ablation Using DeepLabV3 with Combined Dice-Focal Loss</papertitle>
+          <span class="venue-badge">Abstract</span>
+        </span>
+        <span class="project-date">[Jan 2026]</span>
+      </div>
+      <div class="project-authors">
+        <span>S. Jain, S. Gaonkar, <strong>A. Borate</strong>, R. Dhawan, K. B. Bader, and H. Shekhar</span>
+      </div>
+      <div class="project-desc">
+        Accepted at the 31st European Symposium on Ultrasound Contrast Imaging (ESUCI), Rotterdam, Netherlands
+      </div>
     </div>
 
     <!-- Open-Source Contributions: cat open_source.txt -->
@@ -304,75 +329,6 @@
       </ul>
     </div>
 
-    <!-- Selected Projects: cat projects.txt -->
-    <sectionheading>cat projects.txt</sectionheading>
-
-    <div class="project-entry">
-      <div class="project-title-line">
-        <span class="project-title-text">
-          <papertitle>Mini-CLIP: Contrastive Language-Image Pretraining</papertitle>
-        </span>
-        <span class="project-date">[Oct 2025 – Nov 2025]</span>
-      </div>
-      <div class="project-authors">
-        <span>Advisor - Prof. Nirmal Sancheti, IIT Gandhinagar</span>
-        <span class="project-links-inline">| <a href="https://github.com/Aryan-IIT/miniCLIP_DL" target="_blank">[Project
-            Link]</a></span>
-      </div>
-      <ul class="simple-list" style="margin-top: 4px;">
-        <li>Engineered a lightweight CLIP model pairing ViT-S/16 and ResNet-101 vision models with a RoBERTa text
-          encoder fine-tuned on Flickr30K dataset to learn joint visual-semantic embeddings.</li>
-        <li>Achieved an 83.8% Recall@10 in image-to-text retrieval, matching the zero-shot OpenAI CLIP baseline.</li>
-      </ul>
-    </div>
-
-    <div class="project-entry">
-      <div class="project-title-line">
-        <span class="project-title-text">
-          <papertitle>Towards building a scalable graph-stream library</papertitle>
-        </span>
-        <span class="project-date">[Feb 2026 – Apr 2026]</span>
-      </div>
-      <div class="project-authors">
-        <span>Advisor - Prof. Anirban Dasgupta, IIT Gandhinagar</span>
-        <span class="project-links-inline">| <a
-            href="https://github.com/adi776borate/Towards-building-a-scalable-graph-stream-library"
-            target="_blank">[Project Link]</a></span>
-      </div>
-      <ul class="simple-list" style="margin-top: 4px;">
-        <li>Engineered a scalable graph-streaming library implementing linear sketches, Disjoint set union-based
-          connectivity, sampling, and randomized algorithms for large-scale graph analytics.</li>
-        <li>Implemented and benchmarked Count-Min/Count Sketches and streaming graph algorithms on real-world DBLP and
-          Enron graphs, achieving 2.95K edges/s with Count-Min Sketch at only 0.05 MB peak memory and reducing
-          connectivity runtime by 59% and memory by 81% compared to NetworkX baseline.</li>
-        <li>Developed and evaluated streaming optimizations including <em>k</em>-skeleton certificates, cut
-          sparsification, greedy weighted matching, and shortcut-based random walks while processing at 1.2–3.0M
-          edges/s.</li>
-      </ul>
-    </div>
-
-    <div class="project-entry">
-      <div class="project-title-line">
-        <span class="project-title-text">
-          <papertitle>Beyond Naive Merging: A Robust Approach to LLM Compression</papertitle>
-        </span>
-        <span class="project-date">[Sept 2025 – Nov 2025]</span>
-      </div>
-      <div class="project-authors">
-        <span>Advisor - Prof. Mayank Singh, IIT Gandhinagar</span>
-        <span class="project-links-inline">| <a
-            href="https://github.com/Jain-Laksh/Layer-Merging-via-Manifold-Alignment" target="_blank">[Project
-            Link]</a></span>
-      </div>
-      <ul class="simple-list" style="margin-top: 4px;">
-        <li>Reproduced the "Pruning via Merging" (MKA) paper, building a pipeline to compress LLMs by merging layers
-          based on manifold alignment and validating the baseline performance at various compression ratios.</li>
-        <li>Proposed align-then-merge mechanism that uses the Hungarian method for optimal permutation of neurons to
-          align them before merging, outperforming prior results by +9% accuracy on the MMLU dataset using Llama3-8B.
-        </li>
-      </ul>
-    </div>
-
     <!-- Professional Service: cat service.txt -->
     <sectionheading>cat service.txt</sectionheading>
     <ul class="simple-list">
@@ -392,7 +348,7 @@
 
     <!-- Footer -->
     <div class="footer-text">
-      Design inspired by Jon Barron • Last updated October 2026
+      Design inspired by Jon Barron • Last updated November 2026
     </div>
   </div>
 
